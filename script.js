@@ -224,14 +224,11 @@ function arrayDiscos(){
 for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
     document.querySelector(`[data-col="${i}"]`).addEventListener("mouseover", function (evt) {
     document.querySelector(`[data-col="${i}"]`).classList.add("selected")
-    document.querySelector(`[data-col="${i}"]`).appendChild(document.querySelector("#diskPlayer"))
-    document.querySelector("#diskPlayer").setAttribute("style", "top: -2.1vw")
+    document.querySelector("#diskPlayer").style.left = `${(i * 14.28) + 7.14}%`;
 })
 
     document.querySelector(`[data-col="${i}"]`).addEventListener("mouseout", function (evt) {
     document.querySelector(`[data-col="${i}"]`).classList.remove("selected")
-    document.querySelector("#lineDisk").appendChild(document.querySelector("#diskPlayer"))
-    document.querySelector("#diskPlayer").removeAttribute("style")
 })}
 
 

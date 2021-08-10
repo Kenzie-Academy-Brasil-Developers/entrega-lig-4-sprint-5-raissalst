@@ -118,7 +118,9 @@ figcaption {
     top: -25%;
     transform: translate(-50%, 25%);
 }
-
+.player1 {
+    background-color: green;
+}
 
 
 

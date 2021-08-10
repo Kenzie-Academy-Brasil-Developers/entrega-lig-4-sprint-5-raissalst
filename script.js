@@ -162,13 +162,41 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
 
 
 /* Verifica vitória*/
-function vitoria() {
-    /*for ou .forEach que itera sobre matriz, e if (coluna[i].className.includes("nome da classe do jogador") && o mesmo com coluna[i+1, i+2, i+3], vai ficar grandinho) {
-        document.querySelector("#modalContainer").classList.remove("hidden")
-    }*/
+for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+    /* se cada jogador tiver uma classe:*/
+    for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+        // console.log(document.querySelector(`[data-col="${i}"][data-line="${j}"]`))
+        document.addEventListener("click", function() {
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1")) {
+                console.log("ae carai")
+            }
+        })
+    }
+}
+
+for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+    /* se cada jogador tiver uma classe:*/
+    for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+        // console.log(document.querySelector(`[data-col="${i}"][data-line="${j}"]`))
+        document.addEventListener("click", function() {
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1")) {
+                console.log("ae carai só que pro lado")
+            }
+        })
+    }
 }
 
 
+document.querySelector("#ligTable").addEventListener("click", function(evt) {
+    evt.target.classList.add("player1")
+    console.log(evt.target)
+})
 
 
 

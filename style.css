@@ -126,9 +126,16 @@ figcaption {
 
 /*end PEDRO*/
 /*start BEATRIZ*/
-
-
-
+.discPlayer1{
+    background-color: red;
+    width: 30px;
+    height: 30px;
+}
+.discPlayer2{
+    background-color: black;
+    width: 30px;
+    height: 30px;
+}
 
 
 

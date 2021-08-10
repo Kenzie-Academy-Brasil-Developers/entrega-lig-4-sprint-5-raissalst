@@ -91,25 +91,105 @@ for (let i = 0; i < 7; i++) {
 /*end RAISSA*/
 /*start BEATRIZ*/
 
+ligTable.addEventListener("click" , eventClick())
 
 
+function eventClick(){
+    const tableColum = document.getElementsByClassName("divCol")
+    let arrayColunas = []
+    let check
+    let tabCheia = 0
+    let cont = 0
+    let finished = false
+
+    for (let index = 0; index < tableColum.length; index++) {
+        arrayColunas = [...arrayColunas,tableColum[index]]
+    }
+
+    
+
+    arrayColunas.forEach(element => {
+        element.addEventListener("click" , function clicarColuna(event){
+        
+        cont += 1
+        
+        let colunaClicada = event.currentTarget
+
+        let conteudoCel = colunaClicada.children // retorna node com os filhos da coluna clicada
+
+        let disc = document.createElement("div")
+
+        check = verificaCel(conteudoCel,disc,cont)
+        tabCheia += permirtirAddDisc(check)
+
+        finished = endGame(tabCheia)
+
+        arrayDiscos()// array de discos inseridos
+
+        })
+    })
+}
 
 
+function verificaCel(conteudoCel, disc,cont){
+    
+    if((cont%2) !== 0){
+        disc.classList.remove("discPlayer2")
+        disc.classList.add("discPlayer1")
+
+    }else{
+        console.log("maluca")
+        disc.classList.remove("discPlayer1")
+        disc.classList.add("discPlayer2")
+    }
+
+    let status 
+
+    for(let i = conteudoCel.length -1 ; i >= 0 ; i--){
+
+        status = conteudoCel[i]
+
+        if(status.childElementCount < 1){
+
+            status.appendChild(disc)
+            return true
+        }
+    }
+    return false
+}
 
 
+function permirtirAddDisc(check){
+    
+    if(check === false){
+        console.log("Erro. Tente outra coluna")
+        return 1
+    }
+    return 0
+}
 
 
+function endGame(tabCheia){
+    if(tabCheia < 7){
+        return false
+    }
+    console.log("Fim de Jogo")
+    return true
+}
+
+function arrayDiscos(){
+    
+    let discos = []
+    for (let linha = 0; linha < 6; linha++) {
+        for (let col = 0; col < 7; col++) {
+            discos = [...discos , (document.querySelector(`[data-line= ${CSS.escape(linha.toString())}][data-col=${CSS.escape(col.toString())}]`))]
+        }
+    }
+   return discos
+}
 
 
-
-
-
-
-
-
-
-
-
+//console.log(document.querySelector("[data-line=" + CSS.escape(linha.toString()) + "][data-col=" + CSS.escape(col.toString()) + "]"))
 
 
 

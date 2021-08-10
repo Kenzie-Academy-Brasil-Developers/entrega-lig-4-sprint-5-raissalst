@@ -87,11 +87,16 @@ figcaption {
     position: absolute;
     top: 0;
 }
-#diskPlayer {
-    top: -5.5%;
+#diskPlayerMove {
+    border-radius: 100%;
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    position: absolute;
     left: 50%;
+    top: -25%;
+    transform: translate(-50%, 25%);
 }
-
 
 
 
@@ -234,8 +239,8 @@ h1 {
     width: 20px;
     height: 20px;
     position: absolute;
-    /* left: 50%;
-    top: -11%; */
+    left: 50%;
+    top: -11%;
     transform: translate(-50%, 25%);
 }
 

@@ -87,7 +87,6 @@ for (let i = 0; i < 7; i++) {
 
 
 
-
 /*end RAISSA*/
 /*start BEATRIZ*/
 
@@ -192,8 +191,18 @@ for (let i = 0; i < 7; i++) {
 
 /*end PEDRO*/
 /*start YASMIN*/
-
-
+  const reset = document.createElement('button');
+    reset.className = 'reset';
+    reset.textContent = 'Reset';
+    document.body.appendChild(reset);
+    function resetJogo(){
+   
+        reset.addEventListener('click', function(){
+        result("Clique em RESET para reiniciar o JOGO!");
+        mountTable()
+        
+        })
+  }
 
 
 

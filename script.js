@@ -102,6 +102,24 @@
 /*start PEDRO*/
 
 
+/* Handler do mouse */
+document.querySelector(/* COLUNA DA MATRIZ */).addEventListener("mouseover", function (evt) {
+    document.querySelector(/* COLUNA DA MATRIZ*/).classList.add("selected")
+})
+
+document.querySelector(/* COLUNA DA MATRIZ*/).addEventListener("mouseout", function (evt) {
+    document.querySelector(/* COLUNA DA MATRIZ*/).classList.remove("selected")
+
+})
+
+
+/* Verifica vitória*/
+function vitoria() {
+    /*for ou .forEach que itera sobre matriz, e if (coluna[i].className.includes("nome da classe do jogador") && o mesmo com coluna[i+1, i+2, i+3], vai ficar grandinho) {
+        document.querySelector("#modalContainer").classList.remove("hidden")
+    }*/
+}
+
 
 
 

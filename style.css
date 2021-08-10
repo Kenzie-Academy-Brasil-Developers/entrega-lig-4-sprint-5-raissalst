@@ -75,8 +75,12 @@ figcaption {
 
 /*end YASMIN*/
 /*start PEDRO*/
-
-
+.selected {
+    box-shadow: 0 0 20px 4px yellow;
+}
+ .hidden {
+     display:none
+ }
 
 
 

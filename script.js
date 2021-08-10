@@ -214,7 +214,6 @@ function vitoria() {
 
 
 
-
 /*end PEDRO*/
 /*start YASMIN*/
   const reset = document.createElement('button');

@@ -28,21 +28,21 @@ containerLig.appendChild(ligTable);
 //função para montagem do tabuleiro
 function mountTable() {
 //colunas
-    for (let i = 0; i < 7; i++) {
-        let newDivCol = document.createElement("div");
-        newDivCol.setAttribute("class", "divCol");
-        newDivCol.setAttribute("data-col", `${[i]}`)
-        ligTable.appendChild(newDivCol);
+for (let i = 0; i < 7; i++) {
+    let newDivCol = document.createElement("div");
+    newDivCol.setAttribute("class", "divCol");
+    newDivCol.setAttribute("data-col", `${[i]}`)
+    ligTable.appendChild(newDivCol);
 
-        //linhas
-        for (let j = 0; j < 6; j++) {
-            let newDivCel = document.createElement("div");
-            newDivCel.setAttribute("class", "divCell");
-            newDivCel.setAttribute("data-col", `${[i]}`)
-            newDivCel.setAttribute("data-line", `${[j]}`)
-            newDivCol.appendChild(newDivCel);
-        };
+    //linhas
+    for (let j = 0; j < 6; j++) {
+        let newDivCel = document.createElement("div");
+        newDivCel.setAttribute("class", "divCell");
+        newDivCel.setAttribute("data-col", `${[i]}`)
+        newDivCel.setAttribute("data-line", `${[j]}`)
+        newDivCol.appendChild(newDivCel);
     };
+};
 };
 mountTable();
 
@@ -103,20 +103,22 @@ function eventClick(){
     let check
     let tabCheia = 0
     let cont = 0
-    let finished = false
+
+    let arrayControle = [0,0,0,0,0,0,0]
 
     for (let index = 0; index < tableColum.length; index++) {
         arrayColunas = [...arrayColunas,tableColum[index]]
     }
 
-    
-
     arrayColunas.forEach(element => {
         element.addEventListener("click" , function clicarColuna(event){
-        
-        cont += 1
-        
+            
         let colunaClicada = event.currentTarget
+
+        for(let dir = 0 ; dir < 1 ; dir++){
+            if(arrayControle[colunaClicada.getAttribute("data-col")] < 7)
+                arrayControle[colunaClicada.getAttribute("data-col")] += 1
+        }
 
         let conteudoCel = colunaClicada.children // retorna node com os filhos da coluna clicada
 
@@ -125,23 +127,29 @@ function eventClick(){
         check = verificaCel(conteudoCel,disc,cont)
         tabCheia += permirtirAddDisc(check)
 
-        finished = endGame(tabCheia)
-
         arrayDiscos()// array de discos inseridos
+        //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
+        
+        
+            //controle de clicks
 
+            if(arrayControle[colunaClicada.getAttribute("data-col")] < 7){
+                    return cont += 1
+            }else{
+                return cont
+            }
         })
     })
 }
 
 
 function verificaCel(conteudoCel, disc,cont){
-    
+
     if((cont%2) !== 0){
         disc.classList.remove("discPlayer2")
         disc.classList.add("discPlayer1")
 
     }else{
-        console.log("maluca")
         disc.classList.remove("discPlayer1")
         disc.classList.add("discPlayer2")
     }
@@ -163,21 +171,13 @@ function verificaCel(conteudoCel, disc,cont){
 
 
 function permirtirAddDisc(check){
-    
+
     if(check === false){
         console.log("Erro. Tente outra coluna")
+        //FUNCTION ERRO
         return 1
     }
     return 0
-}
-
-
-function endGame(tabCheia){
-    if(tabCheia < 7){
-        return false
-    }
-    console.log("Fim de Jogo")
-    return true
 }
 
 function arrayDiscos(){
@@ -190,12 +190,6 @@ function arrayDiscos(){
     }
    return discos
 }
-
-
-//console.log(document.querySelector("[data-line=" + CSS.escape(linha.toString()) + "][data-col=" + CSS.escape(col.toString()) + "]"))
-
-
-
 
 
 
@@ -280,11 +274,11 @@ function arrayDiscos(){
     reset.textContent = 'Reset';
     document.body.appendChild(reset);
     function resetJogo(){
-   
+
         reset.addEventListener('click', function(){
         result("Clique em RESET para reiniciar o JOGO!");
         mountTable()
-        
+
         })
   }
 

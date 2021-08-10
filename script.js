@@ -25,22 +25,26 @@ containerLig.appendChild(ligTable);
 
 //criando tabuleiro 6linhas(de 0 a 5) x 7colunas(de 0 a 6)
 
+//função para montagem do tabuleiro
+function mountTable() {
 //colunas
-for (let i = 0; i < 7; i++) {
-    let newDivCol = document.createElement("div");
-    newDivCol.setAttribute("class", "divCol");
-    newDivCol.setAttribute("data-col", `${[i]}`)
-    ligTable.appendChild(newDivCol);
+    for (let i = 0; i < 7; i++) {
+        let newDivCol = document.createElement("div");
+        newDivCol.setAttribute("class", "divCol");
+        newDivCol.setAttribute("data-col", `${[i]}`)
+        ligTable.appendChild(newDivCol);
 
-    //linhas
-    for (let j = 0; j < 6; j++) {
-        let newDivCel = document.createElement("div");
-        newDivCel.setAttribute("class", "divCell");
-        newDivCel.setAttribute("data-col", `${[i]}`)
-        newDivCel.setAttribute("data-line", `${[j]}`)
-        newDivCol.appendChild(newDivCel);
+        //linhas
+        for (let j = 0; j < 6; j++) {
+            let newDivCel = document.createElement("div");
+            newDivCel.setAttribute("class", "divCell");
+            newDivCel.setAttribute("data-col", `${[i]}`)
+            newDivCel.setAttribute("data-line", `${[j]}`)
+            newDivCol.appendChild(newDivCel);
+        };
     };
 };
+mountTable();
 
 
 

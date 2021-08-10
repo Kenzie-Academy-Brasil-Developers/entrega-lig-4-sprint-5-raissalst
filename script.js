@@ -143,15 +143,18 @@ for (let i = 0; i < 7; i++) {
 /*start PEDRO*/
 
 
-/* Handler do mouse */
-document.querySelector(/* COLUNA DA MATRIZ */).addEventListener("mouseover", function (evt) {
-    document.querySelector(/* COLUNA DA MATRIZ*/).classList.add("selected")
+// /* Handler do mouse */
+for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
+    document.querySelector(`[data-col="${i}"]`).addEventListener("mouseover", function (evt) {
+    document.querySelector(`[data-col="${i}"]`).classList.add("selected")
+    document.querySelector(`[data-col="${i}"]`).appendChild(document.querySelector("#diskPlayer"))
+    document.querySelector("#diskPlayer").classList.add("playerSelect")
 })
 
-document.querySelector(/* COLUNA DA MATRIZ*/).addEventListener("mouseout", function (evt) {
-    document.querySelector(/* COLUNA DA MATRIZ*/).classList.remove("selected")
-
-})
+    document.querySelector(`[data-col="${i}"]`).addEventListener("mouseout", function (evt) {
+    document.querySelector(`[data-col="${i}"]`).classList.remove("selected")
+    document.querySelector("[data-col='3']").appendChild(document.querySelector("#diskPlayer"))
+})}
 
 
 /* Verifica vitória*/

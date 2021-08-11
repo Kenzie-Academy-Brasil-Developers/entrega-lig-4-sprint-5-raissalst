@@ -103,6 +103,8 @@ function eventClick(){
     let check
     let tabCheia = 0
     let cont = 0
+    let positionA = 0
+    let positionB = 0
 
     let arrayControle = [0,0,0,0,0,0,0]
 
@@ -125,9 +127,17 @@ function eventClick(){
         let disc = document.createElement("div")
 
         check = verificaCel(conteudoCel,disc,cont)
+
+        positionA = disc.parentElement.getAttribute("data-col")
+        positionB = disc.parentElement.getAttribute("data-line")
+
+        changePlayer(cont)
         tabCheia += permirtirAddDisc(check)
 
-        arrayDiscos()// array de discos inseridos
+
+        let discInseridos = arrayDiscos()// array de discos inseridos
+        let arrayResultados = arrayResults(discInseridos)
+        
         //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
         
         
@@ -140,6 +150,24 @@ function eventClick(){
             }
         })
     })
+}
+
+
+
+function changePlayer(cont){
+
+    if((cont%2) !== 0){
+        lineOfPlayer.innerText = ""
+        lineOfPlayer.innerText = "Player 2"
+        diskPlayer.classList.remove("discPlayer1")
+        diskPlayer.classList.add("discPlayer2")
+
+    }else{
+        lineOfPlayer.innerText = ""
+        lineOfPlayer.innerText = "Player 1"
+        diskPlayer.classList.remove("discPlayer2")
+        diskPlayer.classList.add("discPlayer1")
+    }
 }
 
 
@@ -192,6 +220,37 @@ function arrayDiscos(){
 }
 
 
+function arrayResults(discInseridos){
+    let results = discInseridos
+    let diskPlayers = [ [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                    ]
+
+    let contador1 = 0
+
+    for(let posCol = 0 ; posCol < diskPlayers.length ; posCol++){
+        for (let posLine = 0; posLine < diskPlayers[posCol].length; posLine++){
+
+            if(results[contador1].childElementCount === 0){
+                diskPlayers[posCol][posLine] = 0
+            }else{
+                diskPlayers[posCol][posLine] = results[contador1].lastElementChild.className
+            }
+
+            console.log(diskPlayers)
+            
+            contador1++
+            
+
+        }
+    }
+    return diskPlayers
+}
+
 
 
 
@@ -235,31 +294,53 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
 for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
     for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
         document.addEventListener("click", function() {
-            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+1}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+2}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+3}"]`).childElementCount > 0) {
-                let vitoria = document.createTextNode("O jogador ganhou")
-                document.querySelector("#lineOfPlayer").innerText = `o jogador ${document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className} ganhou`
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"] div`).className.includes("discPlayer1")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"] div`).className.includes("discPlayer2")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"  
             }
         })
     }
 }
-
-for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
-    for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
-        document.addEventListener("click", function() {
-            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i+1}"][data-line="${j}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i+2}"][data-line="${j}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i+3}"][data-line="${j}"]`).childElementCount > 0) {
-                let vitoria = document.createTextNode("O jogador ganhou")
-                document.querySelector("#lineOfPlayer").innerText = `o jogador ${document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className} ganhou`
-            }
-        })
-    }
-}
-
 
 
 
@@ -323,25 +404,19 @@ lineOfPlayer.innerText = "Iniciar NOVO jogo";
 })
 
   //empate
+  function empate(){
+        let divCell = document.querySelectorAll('.divCell')
+        let newCell = [...divCell]; 
+        let newArrayEmpate = []
 
-  let divCell = document.querySelectorAll('.divCell')
-let newCell = [...divCell]; 
-let cellLocation = 0;
-let posicaoAtual;
-function empate(event){
-// let target = event.currentTarget;
-// let table = document.querySelector('#ligTable')
+        for(let i = 0; i < newCell.length;i++){ 
+            
+        newArrayEmpate.push(newCell[i].firstChild)
+        }
+        if(!newArrayEmpate.includes(null)){
+            document.querySelector('#modalContainer').classList.remove("hidden")
+        }   
 
-// for(let i = 0; i < newCell.length;i++){ 
-// if(table === newCell){
-// document.getElementById('modalContainerDraw').className = '';
-
-// if(cellLocation === 1){
-// result("Clique em RESET para reiniciar o JOGO!");
-// cellLocation = 0;
-//      }
-//    }
-//   }
 } empate()
 
 
@@ -354,6 +429,7 @@ setTimeout(function(){
 alert.style.display = 'none';
 },1500)
 }
+
 
 
 

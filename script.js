@@ -128,22 +128,20 @@ function eventClick(){
 
         let disc = document.createElement("div")
 
-        check = verificaCel(colunaClicada,disc,cont)
+        check = verificaCel(conteudoCel,disc,cont)
 
         positionA = disc.parentElement.getAttribute("data-col")
         positionB = disc.parentElement.getAttribute("data-line")
 
-        console.log("posColuna " + positionA , "positionLine " + positionB)
-        console.log("positionA : " + positionA , "positionb :" + positionB)
-
         changePlayer(cont)
         tabCheia += permirtirAddDisc(check)
 
-        
+
         let discInseridos = arrayDiscos()// array de discos inseridos
         let arrayResultados = arrayResults(discInseridos)
         
         //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
+        
         resultados(arrayResultados , positionA ,positionB)
         
             //controle de clicks
@@ -158,9 +156,25 @@ function eventClick(){
 }
 
 
-function verificaCel(colunaClicada, disc,cont){
 
-    let conteudoCel = colunaClicada.children // retorna node com os filhos da coluna clicada
+function changePlayer(cont){
+
+    if((cont%2) !== 0){
+        lineOfPlayer.innerText = ""
+        lineOfPlayer.innerText = "Player 2"
+        diskPlayer.classList.remove("discPlayer1")
+        diskPlayer.classList.add("discPlayer2")
+
+    }else{
+        lineOfPlayer.innerText = ""
+        lineOfPlayer.innerText = "Player 1"
+        diskPlayer.classList.remove("discPlayer2")
+        diskPlayer.classList.add("discPlayer1")
+    }
+}
+
+
+function verificaCel(conteudoCel, disc,cont){
 
     if((cont%2) !== 0){
         disc.classList.remove("discPlayer2")
@@ -181,11 +195,6 @@ function verificaCel(colunaClicada, disc,cont){
 
             status.appendChild(disc)
 
-            positionA = Number(colunaClicada.getAttribute("data-col"))
-            positionB = i
-
-            console.log(positionA , positionB)
-            
             return true
         }
     }
@@ -212,22 +221,6 @@ function arrayDiscos(){
         }
     }
    return discos
-}
-
-function changePlayer(cont){
-
-    if((cont%2) !== 0){
-        lineOfPlayer.innerText = ""
-        lineOfPlayer.innerText = "Player 2"
-        diskPlayer.classList.remove("discPlayer1")
-        diskPlayer.classList.add("discPlayer2")
-
-    }else{
-        lineOfPlayer.innerText = ""
-        lineOfPlayer.innerText = "Player 1"
-        diskPlayer.classList.remove("discPlayer2")
-        diskPlayer.classList.add("discPlayer1")
-    }
 }
 
 
@@ -261,7 +254,6 @@ function arrayResults(discInseridos){
     }
     return diskPlayers
 }
-
 
 
 function winDiagonal(matriz , positionA , positionB){
@@ -350,17 +342,56 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
 })}
 
 
-/* Verifica vitória*/
-function vitoria() {
-    /*for ou .forEach que itera sobre matriz, e if (coluna[i].className.includes("nome da classe do jogador") && o mesmo com coluna[i+1, i+2, i+3], vai ficar grandinho) {
-        document.querySelector("#modalContainer").classList.remove("hidden")
-    }*/
+for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+    for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+        document.addEventListener("click", function() {
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"] div`).className.includes("discPlayer1")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"] div`).className.includes("discPlayer2")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"  
+            }
+        })
+    }
 }
-
-
-
-
-
 
 
 
@@ -405,40 +436,32 @@ function vitoria() {
 
 /*end PEDRO*/
 /*start YASMIN*/
-  const reset = document.createElement('button');
-    reset.className = 'reset';
-    reset.textContent = 'Reset';
-    document.body.appendChild(reset);
-    function resetJogo(){
-
-        reset.addEventListener('click', function(){
-        result("Clique em RESET para reiniciar o JOGO!");
-        mountTable()
-
-        })
-  }
+const reset = document.createElement('button');
+reset.className = 'reset';
+reset.textContent = 'Reset';
+document.body.appendChild(reset);
+reset.addEventListener('click', function(){
+let table = document.querySelector('#ligTable')
+table.innerText = ''
+mountTable();
+})
 
   //empate
+  function empate(){
+        let divCell = document.querySelectorAll('.divCell')
+        let newCell = [...divCell]; 
+        let newArrayEmpate = []
 
-  let divCell = document.querySelectorAll('.divCell')
-let newCell = [...divCell]; 
-let cellLocation = 0;
-let posicaoAtual;
-function empate(event){
-// let target = event.currentTarget;
-// let table = document.querySelector('#ligTable')
+        for(let i = 0; i < newCell.length;i++){ 
+            
+        newArrayEmpate.push(newCell[i].firstChild)
+        }
+        if(!newArrayEmpate.includes(null)){
+            document.querySelector('#modalContainer').classList.remove("hidden")
+        }   
 
-// for(let i = 0; i < newCell.length;i++){ 
-// if(table === newCell){
-// document.getElementById('modalContainerDraw').className = '';
-
-// if(cellLocation === 1){
-// result("Clique em RESET para reiniciar o JOGO!");
-// cellLocation = 0;
-//      }
-//    }
-//   }
 } empate()
+
 
 
 

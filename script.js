@@ -25,6 +25,8 @@ containerLig.appendChild(ligTable);
 
 //criando tabuleiro 6linhas(de 0 a 5) x 7colunas(de 0 a 6)
 
+//função para montagem do tabuleiro
+function mountTable() {
 //colunas
 for (let i = 0; i < 7; i++) {
     let newDivCol = document.createElement("div");
@@ -41,6 +43,8 @@ for (let i = 0; i < 7; i++) {
         newDivCol.appendChild(newDivCel);
     };
 };
+};
+mountTable();
 
 
 
@@ -90,28 +94,102 @@ for (let i = 0; i < 7; i++) {
 /*end RAISSA*/
 /*start BEATRIZ*/
 
+ligTable.addEventListener("click" , eventClick())
 
 
+function eventClick(){
+    const tableColum = document.getElementsByClassName("divCol")
+    let arrayColunas = []
+    let check
+    let tabCheia = 0
+    let cont = 0
+
+    let arrayControle = [0,0,0,0,0,0,0]
+
+    for (let index = 0; index < tableColum.length; index++) {
+        arrayColunas = [...arrayColunas,tableColum[index]]
+    }
+
+    arrayColunas.forEach(element => {
+        element.addEventListener("click" , function clicarColuna(event){
+            
+        let colunaClicada = event.currentTarget
+
+        for(let dir = 0 ; dir < 1 ; dir++){
+            if(arrayControle[colunaClicada.getAttribute("data-col")] < 7)
+                arrayControle[colunaClicada.getAttribute("data-col")] += 1
+        }
+
+        let conteudoCel = colunaClicada.children // retorna node com os filhos da coluna clicada
+
+        let disc = document.createElement("div")
+
+        check = verificaCel(conteudoCel,disc,cont)
+        tabCheia += permirtirAddDisc(check)
+
+        arrayDiscos()// array de discos inseridos
+        //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
+        
+        
+            //controle de clicks
+
+            if(arrayControle[colunaClicada.getAttribute("data-col")] < 7){
+                    return cont += 1
+            }else{
+                return cont
+            }
+        })
+    })
+}
 
 
+function verificaCel(conteudoCel, disc,cont){
+
+    if((cont%2) !== 0){
+        disc.classList.remove("discPlayer2")
+        disc.classList.add("discPlayer1")
+
+    }else{
+        disc.classList.remove("discPlayer1")
+        disc.classList.add("discPlayer2")
+    }
+
+    let status 
+
+    for(let i = conteudoCel.length -1 ; i >= 0 ; i--){
+
+        status = conteudoCel[i]
+
+        if(status.childElementCount < 1){
+
+            status.appendChild(disc)
+            return true
+        }
+    }
+    return false
+}
 
 
+function permirtirAddDisc(check){
 
+    if(check === false){
+        console.log("Erro. Tente outra coluna")
+        //FUNCTION ERRO
+        return 1
+    }
+    return 0
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function arrayDiscos(){
+    
+    let discos = []
+    for (let linha = 0; linha < 6; linha++) {
+        for (let col = 0; col < 7; col++) {
+            discos = [...discos , (document.querySelector(`[data-line= ${CSS.escape(linha.toString())}][data-col=${CSS.escape(col.toString())}]`))]
+        }
+    }
+   return discos
+}
 
 
 
@@ -142,6 +220,24 @@ for (let i = 0; i < 7; i++) {
 /*start PEDRO*/
 
 
+// /* Handler do mouse */
+for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
+    document.querySelector(`[data-col="${i}"]`).addEventListener("mouseover", function (evt) {
+    document.querySelector(`[data-col="${i}"]`).classList.add("selected")
+    document.querySelector("#diskPlayer").style.left = `${(i * 14.28) + 7.14}%`;
+})
+
+    document.querySelector(`[data-col="${i}"]`).addEventListener("mouseout", function (evt) {
+    document.querySelector(`[data-col="${i}"]`).classList.remove("selected")
+})}
+
+
+/* Verifica vitória*/
+function vitoria() {
+    /*for ou .forEach que itera sobre matriz, e if (coluna[i].className.includes("nome da classe do jogador") && o mesmo com coluna[i+1, i+2, i+3], vai ficar grandinho) {
+        document.querySelector("#modalContainer").classList.remove("hidden")
+    }*/
+}
 
 
 

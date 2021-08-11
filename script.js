@@ -118,9 +118,10 @@ function eventClick(){
         element.addEventListener("click" , function clicarColuna(event){
             
         let colunaClicada = event.currentTarget
+        let conteudoCel = colunaClicada.children
 
         for(let dir = 0 ; dir < 1 ; dir++){
-            if(arrayControle[colunaClicada.getAttribute("data-col")] < 7)
+            if(arrayControle[colunaClicada.getAttribute("data-col")] < 5)
                 arrayControle[colunaClicada.getAttribute("data-col")] += 1
         }
 
@@ -130,8 +131,13 @@ function eventClick(){
 
         check = verificaCel(conteudoCel,disc,cont)
 
-        positionA = disc.parentElement.getAttribute("data-col")
-        positionB = disc.parentElement.getAttribute("data-line")
+        if(disc.parentElement !== null){
+            positionA = disc.parentElement.getAttribute("data-col")
+            positionB = disc.parentElement.getAttribute("data-line")
+        }
+        
+
+        console.log("posLinha: "+ positionB , "posColuna " + positionA)
 
         changePlayer(cont)
         tabCheia += permirtirAddDisc(check)
@@ -139,14 +145,15 @@ function eventClick(){
 
         let discInseridos = arrayDiscos()// array de discos inseridos
         let arrayResultados = arrayResults(discInseridos)
-        
+
         //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
-        
-        resultados(arrayResultados , positionA ,positionB)
+        winDiagonalXY(arrayResultados ,positionA,positionB)
+        winDiagonalAB(arrayResultados , positionA , positionB)
+        //resultados(arrayResultados , positionA ,positionB)
         
             //controle de clicks
 
-            if(arrayControle[colunaClicada.getAttribute("data-col")] < 7){
+            if(arrayControle[colunaClicada.getAttribute("data-col")] < 6){
                     return cont += 1
             }else{
                 return cont
@@ -244,60 +251,101 @@ function arrayResults(discInseridos){
             }else{
                 diskPlayers[posCol][posLine] = results[contador1].lastElementChild.className
             }
-
-            console.log(diskPlayers)
             
             contador1++
-            
-
+    
         }
     }
     return diskPlayers
 }
 
 
-function winDiagonal(matriz , positionA , positionB){
+function winDiagonalXY(matriz , positionA , positionB){
 
-    console.log(positionA,positionB)
+    let line = Number(positionB);
+    let col = Number(positionA);
+    let diagXY = [];
+    let wins
 
-  let line = positionB;
-  let col = positionA;
-  let encontroAxB 
-  let diag1 = [];
-  if (col === 0 && line === 5) {
-    while (col < 6 || line > 0) {
-        encontroAxB = matriz[line][col]
-        if(encontroAxB !== null){
-            diag1.push(encontroAxB);
+    if (col === 0 && line === 5) {
+        while (col < 6 || line > 0) {
+            diagXY.push(matriz[line][col]);
             line = line - 1;
             col = col + 1;
-            console.log("linha while extremo", line);
-            console.log("coluna while extremo", col);
         }
-        return 
-     
+    return diagXY;
+    } else {
+        while (col < 6 && line < 5) {
+            line = line + 1;
+            col = col + 1;
+        }
+        while (col >= 6 && line >= 0) {
+            diagXY.push(matriz[line][col]);
+            line = line - 1;
+            col = col - 1;
+        }
+    //console.log(diagXY)
     }
-    console.log("diagonal1 "+diag1)
-    return diag1;
-  } else {
-    while (col > 0 && line < 5) {
-      line = line + 1;
-      col = col - 1;
-      console.log("linha", line);
-      console.log("coluna", col);
-    }
-    while (col <= 6 && line >= 0) {
-      diag1.push(matriz[line][col]);
-      line = line - 1;
-      col = col + 1;
-      console.log("linha segundo while", line);
-      console.log("coluna segundo while", col);
-    }
-     console.log("diagonal1 "+diag1)
-    return diag1;
-  }
 }
 
+function winDiagonalAB(matriz , positionA , positionB){
+    let line = Number(positionB);
+    let col = Number(positionA);
+    let diagAB = [];
+    let wins
+    console.table(matriz)
+
+    if (col === 0 && line === 5) {
+        while (col < 6 || line > 0) {
+            diagAB.push(matriz[line][col]);
+            line = line - 1;
+            col = col + 1;
+        }
+    return diagAB;
+    } else {
+        while (col > 0 && line < 5) {
+            line = line + 1;
+            col = col - 1;
+        }
+        while (col <= 6 && line >= 0) {
+            diagAB.push(matriz[line][col]);
+            line = line - 1;
+            col = col + 1;
+        }
+    console.log(diagAB)
+    }
+}
+
+
+
+function compare(diag1){
+    console.log(diag1)
+    let arrTamanho = diag1.length
+    let condWin 
+    if(arrTamanho < 4){
+        return false
+    }
+    /*if(arrTamanho >= 4){
+        let ciclo = 0
+        while(ciclo < 3){
+            condWin = 0
+            for(let igual = ciclo ; igual < (ciclo + 4) ; igual++){
+                if(diag1[igual] === "discPlayer1" || diag1[igual] === "discPlayer2"){
+                    console.log("doida")
+                    if(diag1[igual] === diag1[igual+1]){
+                    condWin += 1
+                    }
+                }
+            }
+
+            if(condWin === 4){
+                return 1
+            }
+            console.log(condWin)
+            ciclo++
+        }
+    }*/
+}
 
 function resultados(arrayResultados,positionA,positionB){
     let matriz = arrayResultados
@@ -341,7 +389,7 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
     document.querySelector(`[data-col="${i}"]`).classList.remove("selected")
 })}
 
-
+/*
 for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
     for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
         document.addEventListener("click", function() {
@@ -392,7 +440,7 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) 
         })
     }
 }
-
+*/
 
 
 

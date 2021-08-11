@@ -232,44 +232,33 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
 })}
 
 
-/* Verifica vitória*/
 for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
-    /* se cada jogador tiver uma classe:*/
     for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
-        // console.log(document.querySelector(`[data-col="${i}"][data-line="${j}"]`))
         document.addEventListener("click", function() {
-            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+1}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+2}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+3}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1")) {
-                console.log("ae carai")
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"]`).childElementCount > 0) {
+                let vitoria = document.createTextNode("O jogador ganhou")
+                document.querySelector("#lineOfPlayer").innerText = `o jogador ${document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className} ganhou`
             }
         })
     }
 }
 
 for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
-    /* se cada jogador tiver uma classe:*/
     for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
-        // console.log(document.querySelector(`[data-col="${i}"][data-line="${j}"]`))
         document.addEventListener("click", function() {
-            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
-                document.querySelector(`[data-col="${i+1}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
-                document.querySelector(`[data-col="${i+2}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1") &&
-                document.querySelector(`[data-col="${i+3}"][data-line="${j}"]`).className.includes(/*NOME DA CLASSE DO JOGADOR*/"player1")) {
-                console.log("ae carai só que pro lado")
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"]`).childElementCount > 0) {
+                let vitoria = document.createTextNode("O jogador ganhou")
+                document.querySelector("#lineOfPlayer").innerText = `o jogador ${document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className} ganhou`
             }
         })
     }
 }
-
-
-document.querySelector("#ligTable").addEventListener("click", function(evt) {
-    evt.target.classList.add("player1")
-    console.log(evt.target)
-})
-
-
 
 
 

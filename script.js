@@ -127,11 +127,6 @@ function eventClick(){
         let disc = document.createElement("div")
 
         check = verificaCel(conteudoCel,disc,cont)
-
-        positionA = disc.parentElement.getAttribute("data-col")
-        positionB = disc.parentElement.getAttribute("data-line")
-
-        changePlayer(cont)
         tabCheia += permirtirAddDisc(check)
 
 
@@ -389,33 +384,30 @@ const reset = document.createElement('button');
 reset.className = 'reset';
 reset.textContent = 'Reset';
 document.body.appendChild(reset);
+
 reset.addEventListener('click', function(){
- //let table = document.querySelector('#ligTable')
-// table.innerText = '';
-// mountTable();
 let divCell = document.querySelectorAll('.divCell')
 let newCell = [...divCell]; 
-for(let i = 0; i < newCell.length;i++){ 
-    newCell[i].innerHTML = '' ;
-    
-}
 
-lineOfPlayer.innerText = "Iniciar NOVO jogo";
+for(let i = 0; i < newCell.length;i++){ 
+     newCell[i].innerHTML = '' ;
+}
 })
 
   //empate
-  function empate(){
-        let divCell = document.querySelectorAll('.divCell')
-        let newCell = [...divCell]; 
-        let newArrayEmpate = []
-
+function empate(){
+let divCell = document.querySelectorAll('.divCell')
+let newCell = [...divCell]; 
+let newArrayEmpate = []
         for(let i = 0; i < newCell.length;i++){ 
-            
         newArrayEmpate.push(newCell[i].firstChild)
         }
         if(!newArrayEmpate.includes(null)){
-            document.querySelector('#modalContainer').classList.remove("hidden")
-        }   
+          erroAlert()
+           document.querySelector('p').innerText = 'EMPATE !!, Reinicie Novo JOGO';
+           return true;
+        }
+        return false
 
 } empate()
 
@@ -424,12 +416,10 @@ function erroAlert(){
 let alert = document.querySelector('#modalContainer');
  alert.style.display = 'unset';
 document.querySelector('p').innerText = 'Essa coluna já está cheia';
-
-setTimeout(function(){
+setTimeout(function sairModal(){
 alert.style.display = 'none';
 },1500)
 }
-
 
 
 

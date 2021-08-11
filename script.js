@@ -235,31 +235,53 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
 for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
     for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
         document.addEventListener("click", function() {
-            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+1}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+2}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+3}"]`).childElementCount > 0) {
-                let vitoria = document.createTextNode("O jogador ganhou")
-                document.querySelector("#lineOfPlayer").innerText = `o jogador ${document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className} ganhou`
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"] div`).className.includes("discPlayer1")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"] div`).className.includes("discPlayer2")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"                    
+                }
+            })
+        }
+    }
+    
+    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+            document.addEventListener("click", function() {
+                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0) {
+                    document.querySelector("#modalContainer").style.display = "unset"  
             }
         })
     }
 }
-
-for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
-    for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
-        document.addEventListener("click", function() {
-            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i+1}"][data-line="${j}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i+2}"][data-line="${j}"]`).childElementCount > 0 &&
-                document.querySelector(`[data-col="${i+3}"][data-line="${j}"]`).childElementCount > 0) {
-                let vitoria = document.createTextNode("O jogador ganhou")
-                document.querySelector("#lineOfPlayer").innerText = `o jogador ${document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className} ganhou`
-            }
-        })
-    }
-}
-
 
 
 

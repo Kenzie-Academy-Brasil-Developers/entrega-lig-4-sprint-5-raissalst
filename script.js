@@ -103,6 +103,8 @@ function eventClick(){
     let check
     let tabCheia = 0
     let cont = 0
+    let positionA = 0
+    let positionB = 0
 
     let arrayControle = [0,0,0,0,0,0,0]
 
@@ -125,9 +127,17 @@ function eventClick(){
         let disc = document.createElement("div")
 
         check = verificaCel(conteudoCel,disc,cont)
+
+        positionA = disc.parentElement.getAttribute("data-col")
+        positionB = disc.parentElement.getAttribute("data-line")
+
+        changePlayer(cont)
         tabCheia += permirtirAddDisc(check)
 
-        arrayDiscos()// array de discos inseridos
+
+        let discInseridos = arrayDiscos()// array de discos inseridos
+        let arrayResultados = arrayResults(discInseridos)
+        
         //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
         
         
@@ -140,6 +150,24 @@ function eventClick(){
             }
         })
     })
+}
+
+
+
+function changePlayer(cont){
+
+    if((cont%2) !== 0){
+        lineOfPlayer.innerText = ""
+        lineOfPlayer.innerText = "Player 2"
+        diskPlayer.classList.remove("discPlayer1")
+        diskPlayer.classList.add("discPlayer2")
+
+    }else{
+        lineOfPlayer.innerText = ""
+        lineOfPlayer.innerText = "Player 1"
+        diskPlayer.classList.remove("discPlayer2")
+        diskPlayer.classList.add("discPlayer1")
+    }
 }
 
 
@@ -191,6 +219,37 @@ function arrayDiscos(){
    return discos
 }
 
+
+function arrayResults(discInseridos){
+    let results = discInseridos
+    let diskPlayers = [ [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0],
+                    ]
+
+    let contador1 = 0
+
+    for(let posCol = 0 ; posCol < diskPlayers.length ; posCol++){
+        for (let posLine = 0; posLine < diskPlayers[posCol].length; posLine++){
+
+            if(results[contador1].childElementCount === 0){
+                diskPlayers[posCol][posLine] = 0
+            }else{
+                diskPlayers[posCol][posLine] = results[contador1].lastElementChild.className
+            }
+
+            console.log(diskPlayers)
+            
+            contador1++
+            
+
+        }
+    }
+    return diskPlayers
+}
 
 
 

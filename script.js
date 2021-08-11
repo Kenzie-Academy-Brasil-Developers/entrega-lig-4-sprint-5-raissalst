@@ -287,18 +287,15 @@ function vitoria() {
 
 /*end PEDRO*/
 /*start YASMIN*/
-  const reset = document.createElement('button');
-    reset.className = 'reset';
-    reset.textContent = 'Reset';
-    document.body.appendChild(reset);
-    function resetJogo(){
-
-        reset.addEventListener('click', function(){
-        result("Clique em RESET para reiniciar o JOGO!");
-        mountTable()
-
-        })
-  }
+const reset = document.createElement('button');
+reset.className = 'reset';
+reset.textContent = 'Reset';
+document.body.appendChild(reset);
+reset.addEventListener('click', function(){
+let table = document.querySelector('#ligTable')
+table.innerText = ''
+mountTable();
+})
 
   //empate
 

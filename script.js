@@ -324,7 +324,7 @@ mountTable();
             
         newArrayEmpate.push(newCell[i].firstChild)
         }
-        if(newArrayEmpate.includes(null)){
+        if(!newArrayEmpate.includes(null)){
             document.querySelector('#modalContainer').classList.remove("hidden")
         }   
 

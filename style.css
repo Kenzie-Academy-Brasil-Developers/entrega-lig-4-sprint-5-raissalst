@@ -42,7 +42,14 @@ figcaption {
     display: none;
     }
 
-    .resultText{}
+    div.divCol{
+        background-color: blue;
+    }
+    div.divCell{
+        background-color: rgb(255, 255, 255);
+        border-radius: 50px;
+        border: solid 3px;
+    }
   @media screen and (min-width: 768px) {
     .reset{
        padding: 10px 30px;

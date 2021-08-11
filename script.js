@@ -309,9 +309,17 @@ reset.className = 'reset';
 reset.textContent = 'Reset';
 document.body.appendChild(reset);
 reset.addEventListener('click', function(){
-let table = document.querySelector('#ligTable')
-table.innerText = ''
-mountTable();
+ //let table = document.querySelector('#ligTable')
+// table.innerText = '';
+// mountTable();
+let divCell = document.querySelectorAll('.divCell')
+let newCell = [...divCell]; 
+for(let i = 0; i < newCell.length;i++){ 
+    newCell[i].innerHTML = '' ;
+    
+}
+
+lineOfPlayer.innerText = "Iniciar NOVO jogo";
 })
 
   //empate
@@ -335,6 +343,17 @@ function empate(event){
 //    }
 //   }
 } empate()
+
+
+function erroAlert(){
+let alert = document.querySelector('#modalContainer');
+ alert.style.display = 'unset';
+document.querySelector('p').innerText = 'Essa coluna já está cheia';
+
+setTimeout(function(){
+alert.style.display = 'none';
+},1500)
+}
 
 
 

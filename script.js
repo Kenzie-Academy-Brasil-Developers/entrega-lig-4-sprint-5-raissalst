@@ -300,9 +300,27 @@ function vitoria() {
         })
   }
 
+  //empate
 
+  let divCell = document.querySelectorAll('.divCell')
+let newCell = [...divCell]; 
+let cellLocation = 0;
+let posicaoAtual;
+function empate(event){
+// let target = event.currentTarget;
+// let table = document.querySelector('#ligTable')
 
+// for(let i = 0; i < newCell.length;i++){ 
+// if(table === newCell){
+// document.getElementById('modalContainerDraw').className = '';
 
+// if(cellLocation === 1){
+// result("Clique em RESET para reiniciar o JOGO!");
+// cellLocation = 0;
+//      }
+//    }
+//   }
+} empate()
 
 
 

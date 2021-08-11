@@ -232,16 +232,33 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
 })}
 
 
-/* Verifica vitória*/
-function vitoria() {
-    /*for ou .forEach que itera sobre matriz, e if (coluna[i].className.includes("nome da classe do jogador") && o mesmo com coluna[i+1, i+2, i+3], vai ficar grandinho) {
-        document.querySelector("#modalContainer").classList.remove("hidden")
-    }*/
+for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+    for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+        document.addEventListener("click", function() {
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+1}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+2}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i}"][data-line="${j+3}"]`).childElementCount > 0) {
+                let vitoria = document.createTextNode("O jogador ganhou")
+                document.querySelector("#lineOfPlayer").innerText = `o jogador ${document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className} ganhou`
+            }
+        })
+    }
 }
 
-
-
-
+for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+    for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
+        document.addEventListener("click", function() {
+            if (document.querySelector(`[data-col="${i}"][data-line="${j}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i+1}"][data-line="${j}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i+2}"][data-line="${j}"]`).childElementCount > 0 &&
+                document.querySelector(`[data-col="${i+3}"][data-line="${j}"]`).childElementCount > 0) {
+                let vitoria = document.createTextNode("O jogador ganhou")
+                document.querySelector("#lineOfPlayer").innerText = `o jogador ${document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className} ganhou`
+            }
+        })
+    }
+}
 
 
 

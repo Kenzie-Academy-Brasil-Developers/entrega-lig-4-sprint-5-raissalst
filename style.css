@@ -170,11 +170,13 @@ figcaption {
     background-color: red;
     width: 30px;
     height: 30px;
+    border-radius: 20px;
 }
 .discPlayer2{
     background-color: black;
     width: 30px;
     height: 30px;
+    border-radius: 20px;
 }
 
 

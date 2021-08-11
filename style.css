@@ -38,11 +38,8 @@ figcaption {
   .reset:hover {
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
   }
-  .hidden{
-    display: none;
-    }
 
-    .resultText{}
+
   @media screen and (min-width: 768px) {
     .reset{
        padding: 10px 30px;
@@ -99,12 +96,28 @@ figcaption {
 
 /*end YASMIN*/
 /*start PEDRO*/
+.selected {
+    box-shadow: inset 0 0 20px 4px yellow;
+    position: relative;
+}
+ .hidden {
+     display:none
+ }
 
-
-
-
-
-
+.playerSelect {
+    position: absolute;
+    top: 0;
+}
+#diskPlayerMove {
+    border-radius: 100%;
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    top: -25%;
+    transform: translate(-50%, 25%);
+}
 
 
 
@@ -150,10 +163,16 @@ figcaption {
 
 /*end PEDRO*/
 /*start BEATRIZ*/
-
-
-
-
+.discPlayer1{
+    background-color: red;
+    width: 30px;
+    height: 30px;
+}
+.discPlayer2{
+    background-color: black;
+    width: 30px;
+    height: 30px;
+}
 
 
 
@@ -247,7 +266,8 @@ h1 {
     width: 20px;
     height: 20px;
     position: absolute;
-    left: 7%;
+    left: 50%;
+    top: -11%;
     transform: translate(-50%, 25%);
 }
 

@@ -291,14 +291,11 @@ function vitoria() {
     reset.className = 'reset';
     reset.textContent = 'Reset';
     document.body.appendChild(reset);
-    function resetJogo(){
-   
-        reset.addEventListener('click', function(){
-        result("Clique em RESET para reiniciar o JOGO!");
-        mountTable()
-        
-        })
-  }
+    reset.addEventListener('click', function(){
+    let table = document.querySelector('#ligTable')
+    table.innerText = ''
+    mountTable();
+   })
 
   //empate
 

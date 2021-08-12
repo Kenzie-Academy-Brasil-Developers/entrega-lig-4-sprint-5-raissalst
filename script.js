@@ -391,6 +391,8 @@ let newCell = [...divCell];
 
 for(let i = 0; i < newCell.length;i++){ 
      newCell[i].innerHTML = '' ;
+     document.querySelector('p').innerText = 'Seu JOGO será Reiniciado';
+     cont = 0
 }
 })
 
@@ -408,19 +410,26 @@ let newArrayEmpate = []
            return true;
         }
         return false
-
-} empate()
+}
 
 
 function erroAlert(){
 let alert = document.querySelector('#modalContainer');
- alert.style.display = 'unset';
+alert.style.display = 'unset';
 document.querySelector('p').innerText = 'Essa coluna já está cheia';
 setTimeout(function sairModal(){
 alert.style.display = 'none';
 },1500)
 }
 
+function vitoriaAlert(){
+ let alert = document.querySelector('#modalContainer');
+alert.style.display = 'unset';
+document.querySelector('p').innerText ='PARÁBENS!!  Você Ganhou';
+setTimeout(function modalSair(){
+alert.style.display = 'none';
+},1500)
+}
 
 
 

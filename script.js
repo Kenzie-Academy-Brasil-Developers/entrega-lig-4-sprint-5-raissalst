@@ -149,19 +149,16 @@ function eventClick(){
         let discInseridos = arrayDiscos()// array de discos inseridos
         let arrayResultados = arrayResults(discInseridos)
 
-        //FUNCTION RESULTS (arrayResultados , positionA , positionB){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
+        //FUNCTION RESULTS - todas as funções que tem verificação de peças 
        
         let final = resultados(arrayResultados , positionA , positionB)
 
-        //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
-        //winDiagonalXY(arrayResultados ,positionA,positionB)
-        //winDiagonalAB(arrayResultados , positionA , positionB)
+        ///////////////////////////////////
         let linhaParaArray = Number(positionB);
         let colunaParaArray = Number(positionA);
         victoryVert(arrayResultados, colunaParaArray);
         victoryHor(arrayResultados, linhaParaArray);
-        diagonalTotal(arrayResultados , positionA , positionB)
-        //resultados(arrayResultados , positionA ,positionB)
+        ////////////////////////////////
         
             //controle de clicks
 
@@ -516,9 +513,10 @@ let divCell = document.querySelectorAll('.divCell')
 let newCell = [...divCell]; 
 
 for(let i = 0; i < newCell.length;i++){ 
-        newCell[i].innerHTML = '' ;
-    }
-    cont = 0
+     newCell[i].innerHTML = '' ;
+     document.querySelector('p').innerText = 'Seu JOGO será Reiniciado';
+     cont = 0
+}
 })
 
   //empate
@@ -535,8 +533,7 @@ let newArrayEmpate = []
            return true;
         }
         return false
-
-} 
+}
 
 
 function erroAlert(){
@@ -548,6 +545,14 @@ alert.style.display = 'none';
 },1500)
 }
 
+function vitoriaAlert(){
+ let alert = document.querySelector('#modalContainer');
+alert.style.display = 'unset';
+document.querySelector('p').innerText ='PARÁBENS!!  Você Ganhou';
+setTimeout(function modalSair(){
+alert.style.display = 'none';
+},1500)
+}
 
 
 

@@ -6,7 +6,7 @@ let containerLig = document.getElementById("lig__container");
 let lineOfPlayer = document.createElement("div");
 lineOfPlayer.setAttribute("id", "lineOfPlayer");
 containerLig.appendChild(lineOfPlayer);
-lineOfPlayer.innerText = "Player 1";
+lineOfPlayer.innerText = "Inicie o jogo!!";
 
 //div para fazer o disco andar em cima das colunas de acordo com a coluna que for selecionada
 let lineDisk = document.createElement("div");

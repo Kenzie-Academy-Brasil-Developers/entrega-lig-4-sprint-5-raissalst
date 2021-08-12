@@ -47,7 +47,14 @@ for (let i = 0; i < 7; i++) {
 mountTable();
 
 
+let newModalContainer = document.querySelector('#modalContainer');
+let closingModal = document.getElementById("close");
 
+closingModal.addEventListener("click", closeMessageModal)
+//fechando no botão X
+function closeMessageModal() {
+newModalContainer.style.display = "none";
+};
 
 
 
@@ -146,6 +153,15 @@ function eventClick(){
        
         let final = resultados(arrayResultados , positionA , positionB)
 
+        //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
+        //winDiagonalXY(arrayResultados ,positionA,positionB)
+        //winDiagonalAB(arrayResultados , positionA , positionB)
+        let linhaParaArray = Number(positionB);
+        let colunaParaArray = Number(positionA);
+        victoryVert(arrayResultados, colunaParaArray);
+        victoryHor(arrayResultados, linhaParaArray);
+        diagonalTotal(arrayResultados , positionA , positionB)
+        //resultados(arrayResultados , positionA ,positionB)
         
             //controle de clicks
 
@@ -366,19 +382,19 @@ function resultados(arrayResultados , positionA , positionB){
     let posicaoA = Number(positionA)
     let posicaoB = Number(positionB)
     let winDiagonal = diagonalTotal(matriz, posicaoA , posicaoB)
-    //let winVertical = victoryVertical(matriz, posicaoA , posicaoB)
-    //let winHorizontal = victoryHorizontal(matriz, posicaoA , posicaoB)
+    let winVertical = victoryVert(matriz, posicaoA)
+    let winHorizontal = victoryHor(matriz, posicaoB)
     let withoutWinner = empate()
     
     if(winDiagonal === true){
         return true
     }
-    /* if(winVertical === true){
+     if(winVertical === true){
         return true
     }
      if(winHorizontal === true){
         return true
-    }*/
+    }
      if(withoutWinner === true){
         return true
     }
@@ -421,59 +437,34 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
 })}
 
 
-/*for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
-    for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
-        document.addEventListener("click", function() {
-            if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+1}"] div`).className.includes("discPlayer1")> 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+2}"] div`).className.includes("discPlayer1")> 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+3}"] div`).className.includes("discPlayer1")> 0) {
-                    document.querySelector("#modalContainer").style.display = "unset"                    
-                }
-            })
-        }
+function victoryVert(arrayResultados, colunaParaArray) {
+    let arrayDiskColorsCol = [];
+    for (let i = 0; i < 6; i++) {
+        arrayDiskColorsCol.push(arrayResultados[i][colunaParaArray]);
     }
-    
-    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
-        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
-            document.addEventListener("click", function() {
-                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
-                document.querySelector(`[data-col="${i+1}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
-                document.querySelector(`[data-col="${i+2}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
-                document.querySelector(`[data-col="${i+3}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0) {
-                    document.querySelector("#modalContainer").style.display = "unset"                    
-                }
-            })
+    for (let i = 0; i < 3; i++) {
+        if (arrayDiskColorsCol[i] === arrayDiskColorsCol[i + 1] &&
+            arrayDiskColorsCol[i] === arrayDiskColorsCol[i + 2] &&
+            arrayDiskColorsCol[i] === arrayDiskColorsCol[i + 3] &&
+            arrayDiskColorsCol[i] !== 0) {
+            document.querySelector("#modalContainer").style.display = "unset"
         }
-    }
-    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
-        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
-            document.addEventListener("click", function() {
-                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+1}"] div`).className.includes("discPlayer2")> 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+2}"] div`).className.includes("discPlayer2")> 0 &&
-                document.querySelector(`[data-col="${i}"][data-line="${j+3}"] div`).className.includes("discPlayer2")> 0) {
-                    document.querySelector("#modalContainer").style.display = "unset"                    
-                }
-            })
-        }
-    }
-    
-    for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
-        for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
-            document.addEventListener("click", function() {
-                if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
-                document.querySelector(`[data-col="${i+1}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
-                document.querySelector(`[data-col="${i+2}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0 &&
-                document.querySelector(`[data-col="${i+3}"][data-line="${j}"] div`).className.includes("discPlayer2")> 0) {
-                    document.querySelector("#modalContainer").style.display = "unset"  
-            }
-        })
     }
 }
-
-
-
+function victoryHor(arrayResultados, linhaParaArray) {
+    let arrayDiskColorsLine = [];
+    for (let i = 0; i < 7; i++) {
+        arrayDiskColorsLine.push(arrayResultados[linhaParaArray][i]);
+    }
+    for (let i = 0; i < 4; i++) {
+        if (arrayDiskColorsLine[i] === arrayDiskColorsLine[i + 1] &&
+            arrayDiskColorsLine[i] === arrayDiskColorsLine[i + 2] &&
+            arrayDiskColorsLine[i] === arrayDiskColorsLine[i + 3] &&
+            arrayDiskColorsLine[i] !== 0) {
+            document.querySelector("#modalContainer").style.display = "unset"
+        }
+    }
+}
 
 
 

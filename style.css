@@ -97,7 +97,7 @@ div.divCol{
 }
 .regras{
     position: absolute;
-    background-image: url("/img/pergaminho.png");
+    background-image: url(/img/pergaminho.png);
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Righteous', cursive;
@@ -228,7 +228,7 @@ footer {
 }
 
 .modal__content {
-    background-image: url(/img/pngwing.com.png);
+    background-image: url("/img/pngwing.com.png");
     position: relative;
     background-size: 90%;
     background-position: center;
@@ -241,12 +241,8 @@ footer {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
+
 .erro__content {
-    background-image: url(/img/pngwing.com.png);
-    position: relative;
-    background-size: 90%;
-    background-position: center;
-    background-repeat: no-repeat;
     margin: auto;
     border: 1px solid #888;
     width: 80%;
@@ -254,6 +250,18 @@ footer {
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    background-color: rgba(255,0,0,0.6);
+}
+
+.empate__content {
+    margin: auto;
+    border: 1px solid #888;
+    width: 80%;
+    height: 40%;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: rgba(255,255,0,0.6);
 }
 
 
@@ -271,7 +279,7 @@ footer {
 } 
 
 #modalContainer p {
-    color: green;
+    color: black;
     position: absolute;
     top: 42%;
     left: 50%;
@@ -280,6 +288,17 @@ footer {
     line-height: 30px;
     font-size: 5vw;
 }
+
+/* .erro__p {
+    color: black;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%);
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 5vw;
+} */
 
 
 /*end YASMIN*/

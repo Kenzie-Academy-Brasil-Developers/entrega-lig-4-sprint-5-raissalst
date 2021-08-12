@@ -529,7 +529,6 @@ reset.textContent = 'Reset';
 
 for(let i = 0; i < newCell.length;i++){ 
      newCell[i].innerHTML = '' ;
-     document.querySelector('p').innerText = 'Seu JOGO será Reiniciado';
      cont = 0
 }
 })
@@ -544,7 +543,8 @@ let newArrayEmpate = []
         }
         if(!newArrayEmpate.includes(null)){
           erroAlert()
-           document.querySelector('p').innerText = 'EMPATE !!, Reinicie Novo JOGO';
+           document.querySelector('.modal__content p').innerText = 'EMPATE !!, Reinicie Novo JOGO';
+           
            return true;
         }
         return false
@@ -554,7 +554,9 @@ let newArrayEmpate = []
 function erroAlert(){
 let alert = document.querySelector('#modalContainer');
 alert.classList.remove("hidden")
-document.querySelector('p').innerText = 'Essa coluna já está cheia';
+document.querySelector('.modal__content p').innerText = 'Essa coluna já está cheia';
+document.querySelector('.modal__content').style.background = "rgba(255, 0, 0, 0.6)"
+document.querySelector('.modal__content p').style.color = "black"
 setTimeout(function sairModal(){
 alert.classList.add("hidden")
 },1500)
@@ -563,7 +565,7 @@ alert.classList.add("hidden")
 function vitoriaAlert(text){
     let alert = document.querySelector('#modalContainer');
     alert.classList.remove("hidden")
-    document.querySelector('p').innerText =`PARÁBENS!!  Você Ganhou ${text}`;
+    document.querySelector('.modal__content p').innerText =`PARÁBENS!!  Você Ganhou ${text}`;
     setTimeout(function modalSair(){
         alert.classList.add("hidden")
         },1500)

@@ -555,10 +555,12 @@ function erroAlert(){
 let alert = document.querySelector('#modalContainer');
 alert.classList.remove("hidden")
 document.querySelector('.modal__content p').innerText = 'Essa coluna já está cheia';
-document.querySelector('.modal__content').style.background = "rgba(255, 0, 0, 0.6)"
-document.querySelector('.modal__content p').style.color = "black"
+document.querySelector('#content').classList.add = "erro__content";
+document.querySelector('#content').classList.remove = "modal__content";
 setTimeout(function sairModal(){
 alert.classList.add("hidden")
+document.querySelector('#content').classList.remove = "erro__content";
+document.querySelector('#content').classList.add = "modal__content";
 },1500)
 }
 

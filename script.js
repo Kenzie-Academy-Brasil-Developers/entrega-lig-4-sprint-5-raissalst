@@ -152,13 +152,6 @@ function eventClick(){
         //FUNCTION RESULTS - todas as funções que tem verificação de peças 
        
         let final = resultados(arrayResultados , positionA , positionB)
-
-        ///////////////////////////////////
-        let linhaParaArray = Number(positionB);
-        let colunaParaArray = Number(positionA);
-        victoryVert(arrayResultados, colunaParaArray);
-        victoryHor(arrayResultados, linhaParaArray);
-        ////////////////////////////////
         
             //controle de clicks
 
@@ -348,11 +341,13 @@ function compare(diagonal){
             }
         }
         if(playOne.length === 4){
-            console.log("playOne: "+playOne.length)
+            let text = "Player1"
+            vitoriaAlert(text)
             return true
         }
         if(playTwo.length === 4){
-            console.log("playOne: "+playOne.length)
+            let text = "Player2"
+            vitoriaAlert(text)
             return true
         }
         return false
@@ -367,10 +362,9 @@ function diagonalTotal(array2D, posA , posB){
     let verifyRL = compare(sentidoDirEsq)
 
     if(verifyLR === true || verifyRL === true){
-        console.log("voce venceu")
+        document.querySelector("#modalContainer").classList.remove("hidden")
         return true
     }
-    console.log("continue jogando")
     return false
 }
 
@@ -444,7 +438,14 @@ function victoryVert(arrayResultados, colunaParaArray) {
             arrayDiskColorsCol[i] === arrayDiskColorsCol[i + 2] &&
             arrayDiskColorsCol[i] === arrayDiskColorsCol[i + 3] &&
             arrayDiskColorsCol[i] !== 0) {
-            document.querySelector("#modalContainer").style.display = "unset"
+            document.querySelector("#modalContainer").classList.remove("hidden")
+            if(arrayDiskColorsCol[i] === "discPlayer2"){
+                let text = "Player2"
+                vitoriaAlert(text)
+            }else{
+                let text = "Player1"
+                vitoriaAlert(text)
+            }
         }
     }
 }
@@ -458,7 +459,14 @@ function victoryHor(arrayResultados, linhaParaArray) {
             arrayDiskColorsLine[i] === arrayDiskColorsLine[i + 2] &&
             arrayDiskColorsLine[i] === arrayDiskColorsLine[i + 3] &&
             arrayDiskColorsLine[i] !== 0) {
-            document.querySelector("#modalContainer").style.display = "unset"
+            document.querySelector("#modalContainer").classList.remove("hidden")
+            if(arrayDiskColorsLine[i] === "discPlayer2"){
+                let text = "Player2"
+                vitoriaAlert(text)
+            }else{
+                let text = "Player1"
+                vitoriaAlert(text)
+            }
         }
     }
 }
@@ -511,6 +519,8 @@ document.body.appendChild(reset);
 reset.addEventListener('click', function(){
 let divCell = document.querySelectorAll('.divCell')
 let newCell = [...divCell]; 
+let container = document.querySelector('#modalContainer');
+container.classList.add("hidden")
 
 for(let i = 0; i < newCell.length;i++){ 
      newCell[i].innerHTML = '' ;
@@ -538,20 +548,20 @@ let newArrayEmpate = []
 
 function erroAlert(){
 let alert = document.querySelector('#modalContainer');
-alert.style.display = 'unset';
+alert.classList.remove("hidden")
 document.querySelector('p').innerText = 'Essa coluna já está cheia';
 setTimeout(function sairModal(){
-alert.style.display = 'none';
+alert.classList.add("hidden")
 },1500)
 }
 
-function vitoriaAlert(){
- let alert = document.querySelector('#modalContainer');
-alert.style.display = 'unset';
-document.querySelector('p').innerText ='PARÁBENS!!  Você Ganhou';
-setTimeout(function modalSair(){
-alert.style.display = 'none';
-},1500)
+function vitoriaAlert(text){
+    let alert = document.querySelector('#modalContainer');
+    alert.classList.remove("hidden")
+    document.querySelector('p').innerText =`PARÁBENS!!  Você Ganhou ${text}`;
+    setTimeout(function modalSair(){
+        alert.classList.add("hidden")
+        },1500)
 }
 
 

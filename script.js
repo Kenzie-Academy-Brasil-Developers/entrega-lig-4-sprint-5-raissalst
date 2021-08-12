@@ -147,8 +147,9 @@ function eventClick(){
         let arrayResultados = arrayResults(discInseridos)
 
         //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
-        winDiagonalXY(arrayResultados ,positionA,positionB)
-        winDiagonalAB(arrayResultados , positionA , positionB)
+        //winDiagonalXY(arrayResultados ,positionA,positionB)
+        //winDiagonalAB(arrayResultados , positionA , positionB)
+        diagonalTotal(arrayResultados , positionA , positionB)
         //resultados(arrayResultados , positionA ,positionB)
         
             //controle de clicks
@@ -265,11 +266,14 @@ function winDiagonalXY(matriz , positionA , positionB){
     let line = Number(positionB);
     let col = Number(positionA);
     let diagXY = [];
-    let wins
 
     if (col === 0 && line === 5) {
 
+        while (col < 6 || line > 0) {
         diagXY.push(matriz[line][col]);
+        line = line - 1;
+        col = col + 1;
+        }
         return diagXY;
 
     } else{
@@ -291,12 +295,16 @@ function winDiagonalAB(matriz , positionA , positionB){
     let line = Number(positionB);
     let col = Number(positionA);
     let diagAB = [];
-    let wins
+
     console.table(matriz)
 
     if (col === 6 && line === 5) {
 
+        while (col < 6 || line > 0) {
         diagAB.push(matriz[line][col]);
+        line = line - 1;
+        col = col + 1;
+        }
         return diagAB;
 
     } else {
@@ -304,9 +312,8 @@ function winDiagonalAB(matriz , positionA , positionB){
         while (col < 6 && line < 5) {
             line = line + 1;
             col = col + 1;
-            console.log("doida" , "line "+line , "col "+col)
         }
-        while (col <= 6 && line >= 0) {
+        while (col >= 0 && line >= 0) {
             console.log("maluca" , "line "+line , "col "+col)
             diagAB.push(matriz[line][col]);
             line = line - 1;
@@ -317,35 +324,46 @@ function winDiagonalAB(matriz , positionA , positionB){
     }
 }
 
-
-
-function compare(diag1){
-    console.log(diag1)
-    let arrTamanho = diag1.length
-    let condWin 
-    if(arrTamanho < 4){
+function compare(diagonal){
+    let arrDiag = diagonal
+    let playOne = []
+    let playTwo = []
+    if(arrDiag.length < 4){
         return false
     }
-    /*if(arrTamanho >= 4){
-        let ciclo = 0
-        while(ciclo < 3){
-            condWin = 0
-            for(let igual = ciclo ; igual < (ciclo + 4) ; igual++){
-                if(diag1[igual] === "discPlayer1" || diag1[igual] === "discPlayer2"){
-                    console.log("doida")
-                    if(diag1[igual] === diag1[igual+1]){
-                    condWin += 1
-                    }
-                }
+    if(arrDiag.length >=4){
+        for (let index = 0; index < arrDiag.length; index++) {
+            if(arrDiag[index] === "discPlayer1"){
+                playOne.push(arrDiag[index])
             }
-
-            if(condWin === 4){
-                return 1
+            if(arrDiag[index] === "discPlayer2"){
+                playTwo.push(arrDiag[index])
             }
-            console.log(condWin)
-            ciclo++
         }
-    }*/
+        if(playOne.length === 4){
+            console.log("playOne: "+playOne.length)
+            return true
+        }
+        if(playTwo.length === 4){
+            console.log("playOne: "+playOne.length)
+            return true
+        }
+        return false
+    }
+}
+
+function diagonalTotal(array2D, posA , posB){
+    let sentidoEsqDir = winDiagonalXY(array2D, posA , posB)
+    let sentidoDirEsq = winDiagonalAB(array2D, posA , posB)
+    let verifyLR = compare(sentidoEsqDir)
+    let verifyRL = compare(sentidoDirEsq)
+
+    if(verifyLR === true || verifyRL === true){
+        console.log("voce venceu")
+        return true
+    }
+    console.log("continue jogando")
+    return false
 }
 
 function resultados(arrayResultados,positionA,positionB){
@@ -390,7 +408,7 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
     document.querySelector(`[data-col="${i}"]`).classList.remove("selected")
 })}
 
-/*
+
 for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
     for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
         document.addEventListener("click", function() {
@@ -441,7 +459,7 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) 
         })
     }
 }
-*/
+
 
 
 

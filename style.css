@@ -55,6 +55,23 @@ figcaption {
   .hidden{
     display: none;
     }
+#lineOfPlayer{
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+    }
+    div.divCol{
+        background-color: blue;
+    }
+    
+    div.divCell{
+        margin: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        border-radius: 50%;
+    }
 
   @media screen and (min-width: 768px) {
     .reset{

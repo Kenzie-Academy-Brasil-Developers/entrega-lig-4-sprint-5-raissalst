@@ -1,4 +1,5 @@
 /*start reset*/
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, i, ol, ul, li, form, label, article, figure, figcaption, footer, header, nav, section {
 	margin: 0;
@@ -21,284 +22,14 @@ body {
 figcaption {
     display: none; /*esconde a legenda da imagem*/
 }
-    /* 
 
-#modalContainer {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    overflow: auto;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    padding: 5% 10%;
-    border: 3px solid black;
-    border-radius: 15px;
-    box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, 0.801);
-    background-color: rgb(199, 197, 197);
-}
+/* inicio da estilização*/
 
-.modal__content {
-    padding: 20px;
-    width: 80%;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    font-size:2rem;
-    margin-bottom: 1.8rem;
-    margin: 10px auto;
-  }
-
-#close {
-    display: none;
-    text-align: center;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-#close:hover, .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}  */
-
-.reset {
-    background-color: rgb(90, 228, 238);
-    padding: 3px 15px;
-    display: flex;
-    margin: 17vw auto;
-    border-color: #addeff;
-    color: #fff;
-    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
-    -webkit-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
-  }
-  .reset:hover {
-    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
-  }
-  .hidden{
-    display: none;
-    }
-#lineOfPlayer{
-        background-color: blue;
-        color: white;
-        font-weight: bold;
-    }
-    div.divCol{
-        background-color: blue;
-    }
-    
-    div.divCell{
-        margin: 2px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgb(255, 255, 255);
-        border-radius: 50%;
-    }
-
-  @media screen and (min-width: 768px) {
-    .reset{
-       padding: 10px 30px;
-       margin: 10vw auto;
-       font-size: 25px;
-    }
-    
-}
-@media screen and (min-width: 1440px){
-    .modal__content {
-        font-size:4rem;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*end YASMIN*/
-/*start PEDRO*/
-.selected {
-    box-shadow: inset 0 0 20px 4px yellow;
-    position: relative;
-}
- .hidden {
-     display:none
- }
-
-.playerSelect {
-    position: absolute;
-    top: 0;
-}
-#diskPlayerMove {
-    border-radius: 100%;
-    background-color: black;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: 50%;
-    top: -25%;
-    transform: translate(-50%, 25%);
-}
-.player1 {
-    background-color: green;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*end PEDRO*/
-/*start BEATRIZ*/
-.discPlayer1{
-    background-color: red;
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-}
-.discPlayer2{
-    background-color: black;
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-}
-
-@media screen and (min-width: 768px){
-    .discPlayer1{
-    width: 90%;
-    height: 90%;
-    border-radius: 60px;
-    border: 10px double black
-    }
-    .discPlayer2{
-    width: 90%;
-    height: 90%;
-    border-radius: 60px;
-    border: 10px double darkred;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*end BEATRIZ*/
-/*start RAISSA*/
 body {
+background-image: url("img/bomberman.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+background-position-x: center;
 width: 100vw;
 height: 110vw;
 position: relative;
@@ -310,33 +41,126 @@ header {
     line-height: 40px;
 }
 
-h1 {
-    font-family: 'Righteous', cursive;
+header h1 {
+    font-family: 'Press Start 2P', cursive;
     text-align: center;
-    letter-spacing: 2px;
     font-size: 20px;
+    color: #000;
+    text-shadow:
+               -1px -1px 0px #FFF,
+               -1px 1px 0px #FFF,
+                1px -1px 0px #FFF,
+                1px 0px 0px #FFF;
 }
 
 #lig__container {
     width: 80vw;
-    height: 68.6vw;
+    height: 88.6vw;
     margin: 0 auto;
 }
 
-#lineOfPlayer {
-    border: 2px solid teal;
+#lineOfPlayer{  
+    color: white;
+    font-weight: bold;
     height: 30px;
     width: 80vw;
     text-align: center;
-    line-height: 30px;
+    line-height: 30px
 }
 
 #lineDisk {
-    border: 2px solid teal;
+    border: 5px solid #BFBFBF;
+    border-radius: 10px 10px 0 0;
     height: 30px;
     width: 80vw;
     position: relative;
 }
+
+div.divCol{
+    background-color: #3B7302;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%; 
+    width: 14.28%; 
+}
+.regras{
+    position: absolute;
+    background-image: url("/img/pergaminho.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Righteous', cursive;
+    z-index: 1;
+    width: 65%;
+    height: 76%;
+    font-size: 5vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    top: 20%;
+    right: 20%;
+}
+.regras p{   
+    height: 100%;
+    width: 90%;
+    line-height: 100%;
+}
+
+div.divCell{
+        margin: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+}
+
+.discPlayer1{
+    background-image: url("img/saturno.gif");
+    background-size: cover;
+    background-position-x: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+}
+.discPlayer2{
+    background-image: url("img/jupiter.gif");
+    background-size: cover;
+    background-position-x: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+
+.reset {
+    background-color: rgb(90, 228, 238);
+    padding: 3px 15px;
+    display: flex;
+    margin: 17vw auto;
+    border-color: #addeff;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+.reset:hover {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+}
+
+.hidden{
+    display: none;
+}
+
+
+
+
 
 #diskPlayer {
     border-radius: 100%;
@@ -356,22 +180,6 @@ h1 {
     height: 68.6vw;
 }
 
-.divCol {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%; /*16.67%;*/
-    width: 14.28%; /*100%*/
-    border: 2px solid dodgerblue;
-}
-
-.divCell {
-    /* background-color: dodgerblue; */
-    /* border: 1px solid red; */
-    height: 100%;
-    width: 100%;
-}
 
 footer {
     width: 100%;
@@ -419,20 +227,48 @@ footer {
   cursor: pointer;
 } 
 
-p {
+#modalContainer p {
     color:teal;
     font-weight: bold;
 }
 
-@media screen and (min-width: 768px) {
 
-    body {
-        height: 100vw;
+/*end YASMIN*/
+/*start PEDRO*/
+.selected {
+    box-shadow: inset 0 0 20px 4px yellow;
+    position: relative;
+}
+
+.playerSelect {
+    position: absolute;
+    top: 0;
+}
+#diskPlayerMove {
+    border-radius: 100%;
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    top: -25%;
+    transform: translate(-50%, 25%);
+}
+.player1 {
+    background-color: green;
+}
+
+
+/*end PEDRO*/
+@media screen and (min-width: 768px) {
+    .reset{
+       padding: 10px 30px;
+       margin: 10vw auto;
+       font-size: 25px;
     }
 
-    #labirinto__container {
-        width: 60vw;
-        height: 51vw;
+     body {
+        height: 100vw;
     }
 
     header {
@@ -440,52 +276,31 @@ p {
         line-height: 80px;
     }
 
-    h1 {
+    #modalContainer h1 {
         letter-spacing: 2px;
         font-size: 40px;
+    }
+
+    .discPlayer1{
+    width: 90%;
+    height: 90%;
+    border-radius: 60px;
+    border: 10px double black
+    }
+    .discPlayer2{
+    width: 90%;
+    height: 90%;
+    border-radius: 60px;
+    border: 10px double darkred;
+    }
+    
+}
+
+
+@media screen and (min-width: 1440px){
+    .modal__content {
+        font-size:4rem;
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*end RAISSA*/

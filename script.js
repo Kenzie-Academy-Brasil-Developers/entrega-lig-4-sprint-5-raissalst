@@ -268,23 +268,22 @@ function winDiagonalXY(matriz , positionA , positionB){
     let wins
 
     if (col === 0 && line === 5) {
-        while (col < 6 || line > 0) {
-            diagXY.push(matriz[line][col]);
-            line = line - 1;
-            col = col + 1;
-        }
-    return diagXY;
-    } else {
-        while (col < 6 && line < 5) {
+
+        diagXY.push(matriz[line][col]);
+        return diagXY;
+
+    } else{
+        while (col > 0 && line < 5) {
             line = line + 1;
-            col = col + 1;
-        }
-        while (col >= 6 && line >= 0) {
-            diagXY.push(matriz[line][col]);
-            line = line - 1;
             col = col - 1;
         }
-    //console.log(diagXY)
+        while (col <= 6 && line >= 0) {
+            diagXY.push(matriz[line][col]);
+            line = line - 1;
+            col = col + 1;
+        }
+    console.log(diagXY)
+    return diagXY
     }
 }
 
@@ -295,24 +294,26 @@ function winDiagonalAB(matriz , positionA , positionB){
     let wins
     console.table(matriz)
 
-    if (col === 0 && line === 5) {
-        while (col < 6 || line > 0) {
-            diagAB.push(matriz[line][col]);
-            line = line - 1;
-            col = col + 1;
-        }
-    return diagAB;
+    if (col === 6 && line === 5) {
+
+        diagAB.push(matriz[line][col]);
+        return diagAB;
+
     } else {
-        while (col > 0 && line < 5) {
+        console.log("mane" , "line "+line , "col "+col)
+        while (col < 6 && line < 5) {
             line = line + 1;
-            col = col - 1;
+            col = col + 1;
+            console.log("doida" , "line "+line , "col "+col)
         }
         while (col <= 6 && line >= 0) {
+            console.log("maluca" , "line "+line , "col "+col)
             diagAB.push(matriz[line][col]);
             line = line - 1;
-            col = col + 1;
+            col = col - 1;
         }
     console.log(diagAB)
+    return diagAB
     }
 }
 

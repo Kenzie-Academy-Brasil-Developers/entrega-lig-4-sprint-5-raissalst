@@ -211,9 +211,20 @@ figcaption {
     border-radius: 20px;
 }
 
-
-
-
+@media screen and (min-width: 768px){
+    .discPlayer1{
+    width: 90%;
+    height: 90%;
+    border-radius: 60px;
+    border: 10px double black
+    }
+    .discPlayer2{
+    width: 90%;
+    height: 90%;
+    border-radius: 60px;
+    border: 10px double darkred;
+    }
+}
 
 
 

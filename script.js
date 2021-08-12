@@ -112,7 +112,7 @@ function eventClick(){
     let arrayColunas = []
     let check
     let tabCheia
-    let cont = 0
+    cont = 0
     let positionA = 0
     let positionB = 0
 

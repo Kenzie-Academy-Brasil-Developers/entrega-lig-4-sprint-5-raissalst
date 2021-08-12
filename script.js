@@ -47,7 +47,14 @@ for (let i = 0; i < 7; i++) {
 mountTable();
 
 
+let newModalContainer = document.querySelector('#modalContainer');
+let closingModal = document.getElementById("close");
 
+closingModal.addEventListener("click", closeMessageModal)
+//fechando no botão X
+function closeMessageModal() {
+newModalContainer.style.display = "none";
+};
 
 
 

@@ -95,6 +95,7 @@ mountTable();
 /*start BEATRIZ*/
 
 
+let cont = 0
 
 ligTable.addEventListener("click" , eventClick())
 
@@ -103,7 +104,7 @@ function eventClick(){
     const tableColum = document.getElementsByClassName("divCol")
     let arrayColunas = []
     let check
-    let tabCheia = 0
+    let tabCheia
     let cont = 0
     let positionA = 0
     let positionB = 0
@@ -125,8 +126,6 @@ function eventClick(){
                 arrayControle[colunaClicada.getAttribute("data-col")] += 1
         }
 
-        
-
         let disc = document.createElement("div")
 
         check = verificaCel(conteudoCel,disc,cont)
@@ -135,9 +134,6 @@ function eventClick(){
             positionA = disc.parentElement.getAttribute("data-col")
             positionB = disc.parentElement.getAttribute("data-line")
         }
-        
-
-        console.log("posLinha: "+ positionB , "posColuna " + positionA)
 
         changePlayer(cont)
         tabCheia += permirtirAddDisc(check)
@@ -146,11 +142,10 @@ function eventClick(){
         let discInseridos = arrayDiscos()// array de discos inseridos
         let arrayResultados = arrayResults(discInseridos)
 
-        //FUNCTION RESULTS (){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
-        //winDiagonalXY(arrayResultados ,positionA,positionB)
-        //winDiagonalAB(arrayResultados , positionA , positionB)
-        diagonalTotal(arrayResultados , positionA , positionB)
-        //resultados(arrayResultados , positionA ,positionB)
+        //FUNCTION RESULTS (arrayResultados , positionA , positionB){ VITORIA DIAGONAL() ; VITORIA HORIZONTAL() ; VITORIA VERTICAL() , EMPATE()}
+       
+        let final = resultados(arrayResultados , positionA , positionB)
+
         
             //controle de clicks
 
@@ -159,7 +154,7 @@ function eventClick(){
             }else{
                 return cont
             }
-        })
+        }) 
     })
 }
 
@@ -214,7 +209,7 @@ function permirtirAddDisc(check){
 
     if(check === false){
         console.log("Erro. Tente outra coluna")
-        //FUNCTION ERRO
+        erroAlert()
         return 1
     }
     return 0
@@ -263,8 +258,8 @@ function arrayResults(discInseridos){
 
 function winDiagonalXY(matriz , positionA , positionB){
 
-    let line = Number(positionB);
-    let col = Number(positionA);
+    let line = positionB;
+    let col = positionA;
     let diagXY = [];
 
     if (col === 0 && line === 5) {
@@ -286,17 +281,15 @@ function winDiagonalXY(matriz , positionA , positionB){
             line = line - 1;
             col = col + 1;
         }
-    console.log(diagXY)
+    
     return diagXY
     }
 }
 
 function winDiagonalAB(matriz , positionA , positionB){
-    let line = Number(positionB);
-    let col = Number(positionA);
+    let line = positionB;
+    let col = positionA;
     let diagAB = [];
-
-    console.table(matriz)
 
     if (col === 6 && line === 5) {
 
@@ -308,18 +301,18 @@ function winDiagonalAB(matriz , positionA , positionB){
         return diagAB;
 
     } else {
-        console.log("mane" , "line "+line , "col "+col)
+    
         while (col < 6 && line < 5) {
             line = line + 1;
             col = col + 1;
         }
         while (col >= 0 && line >= 0) {
-            console.log("maluca" , "line "+line , "col "+col)
+           
             diagAB.push(matriz[line][col]);
             line = line - 1;
             col = col - 1;
         }
-    console.log(diagAB)
+    
     return diagAB
     }
 }
@@ -328,6 +321,7 @@ function compare(diagonal){
     let arrDiag = diagonal
     let playOne = []
     let playTwo = []
+
     if(arrDiag.length < 4){
         return false
     }
@@ -353,6 +347,7 @@ function compare(diagonal){
 }
 
 function diagonalTotal(array2D, posA , posB){
+
     let sentidoEsqDir = winDiagonalXY(array2D, posA , posB)
     let sentidoDirEsq = winDiagonalAB(array2D, posA , posB)
     let verifyLR = compare(sentidoEsqDir)
@@ -366,11 +361,28 @@ function diagonalTotal(array2D, posA , posB){
     return false
 }
 
-function resultados(arrayResultados,positionA,positionB){
+function resultados(arrayResultados , positionA , positionB){
     let matriz = arrayResultados
-    winDiagonal(matriz , positionA , positionB)
-    //vitoria horizontal , vitoria vertical
-    return "lose"
+    let posicaoA = Number(positionA)
+    let posicaoB = Number(positionB)
+    let winDiagonal = diagonalTotal(matriz, posicaoA , posicaoB)
+    //let winVertical = victoryVertical(matriz, posicaoA , posicaoB)
+    //let winHorizontal = victoryHorizontal(matriz, posicaoA , posicaoB)
+    let withoutWinner = empate()
+    
+    if(winDiagonal === true){
+        return true
+    }
+    /* if(winVertical === true){
+        return true
+    }
+     if(winHorizontal === true){
+        return true
+    }*/
+     if(withoutWinner === true){
+        return true
+    }
+    return false
 }
 
 
@@ -397,7 +409,7 @@ function resultados(arrayResultados,positionA,positionB){
 /*start PEDRO*/
 
 
-// /* Handler do mouse */
+// /* Handler do mouse *//
 for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
     document.querySelector(`[data-col="${i}"]`).addEventListener("mouseover", function (evt) {
     document.querySelector(`[data-col="${i}"]`).classList.add("selected")
@@ -409,7 +421,7 @@ for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++){
 })}
 
 
-for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
+/*for (let i = 0; i < document.querySelector("#ligTable").childElementCount; i++) {
     for (let j = 0; j < document.querySelector(`[data-col="${i}"]`).childElementCount; j++) {
         document.addEventListener("click", function() {
             if (document.querySelector(`[data-col="${i}"][data-line="${j}"] div`).className.includes("discPlayer1")> 0 &&
@@ -513,8 +525,9 @@ let divCell = document.querySelectorAll('.divCell')
 let newCell = [...divCell]; 
 
 for(let i = 0; i < newCell.length;i++){ 
-     newCell[i].innerHTML = '' ;
-}
+        newCell[i].innerHTML = '' ;
+    }
+    cont = 0
 })
 
   //empate
@@ -532,12 +545,12 @@ let newArrayEmpate = []
         }
         return false
 
-} empate()
+} 
 
 
 function erroAlert(){
 let alert = document.querySelector('#modalContainer');
- alert.style.display = 'unset';
+alert.style.display = 'unset';
 document.querySelector('p').innerText = 'Essa coluna já está cheia';
 setTimeout(function sairModal(){
 alert.style.display = 'none';

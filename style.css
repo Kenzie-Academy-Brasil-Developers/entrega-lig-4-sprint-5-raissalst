@@ -35,6 +35,7 @@ figcaption {
 
 header {
     width: 100%;
+    padding: 20px;
     height: 40px;
     line-height: 40px;
 }
@@ -53,7 +54,7 @@ header h1 {
 
 #lig__container {
     width: 80vw;
-    margin: 0 auto;
+    margin: 10% auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,10 +70,10 @@ header h1 {
     text-align: center;
     line-height: 30px;
     text-shadow:
-    -1px -1px 0px red,
-    -1px 1px 0px red,
-     1px -1px 0px red,
-     1px 0px 0px red;
+        -1px -1px 0px red,
+        -1px 1px 0px red,
+        1px -1px 0px red,
+        1px 0px 0px red;
 }
 
 #lineDisk {
@@ -95,32 +96,39 @@ div.divCol{
     height: 100%; 
     width: 14.28%; 
 }
-.regras{
+.regras {
     position: absolute;
     font-family: 'Righteous', cursive;
     z-index: 1;
-    width: 65%;
-    height: 76%;
-    font-size: 4.5vw;
+    width: 75%;
+    height: 70%;
+    font-size: 5.5vw;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px;
-    top: 10%;
-    right: 20%;
+    padding: 25px;
+    top: 22%;
+    right: 15%;
 }
 #pergaminho {
     position: absolute;
-    width: 100%;
+    width: 95%;
     z-index: -1;
     top: 0;
 }
-.regras p{   
-    height: 200%;
-    width: 80%;
-    line-height: 100%;
+.regras h2{
+    margin-bottom: 10px;
+    margin-top: 10%;
+    font-size: 6vw;
+
+}
+
+.regras p {
+    height: 100%;
+    width: 70%;
+    line-height: 95%;
 }
 
 div.divCell{
@@ -170,6 +178,7 @@ footer {
     background-color: rgb(90, 228, 238);
     padding: 8px 25px;
     z-index: 2;
+    margin: 20px;
     border-color: #addeff;
     box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
     -webkit-transition: all 150ms ease-in-out;
@@ -227,29 +236,16 @@ footer {
 }
 
 .modal__content {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(19, 2, 2, 0.815);
     position: relative;
-    background-size: 90%;
-    background-position: center;
-    background-repeat: no-repeat;
+    font-size: 5.5vw;
     margin: auto;
-    border: 1px solid #888;
+    border: 5px double #888;
+    border-radius: 30px;
     width: 80%;
     height: 40%;
-    font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-}
-
-.erro__content {
-    margin: auto;
-    border: 1px solid #888;
-    width: 80%;
-    height: 40%;
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    background-color: rgba(255,0,0,0.6);
 }
 
 .empate__content {
@@ -278,14 +274,14 @@ footer {
 } 
 
 #modalContainer p {
-    color: black;
+    color: white;
+    text-shadow: -1px -1px 0px black, -1px 1px 0px black, 1px -1px 0px black, 1px 0px 0px black;
     position: absolute;
-    top: 42%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%);
     font-weight: bold;
-    line-height: 30px;
-    font-size: 2vw;
+   
 }
 
 
@@ -296,6 +292,32 @@ footer {
     position: relative;
     transition: all 250ms ease-in-out;
 }
+
+@media screen and (min-width: 480px){
+
+    header h1{
+        font-size: 30px
+    }
+
+    #pergaminho {
+        width: 85%;
+        top: 4%;
+    }
+
+    .reset{
+        margin: 15px;
+    }
+    .regras{
+        top: 25%;
+    }
+    .regras h2{
+        margin-top: 12%;
+        margin-bottom: 10px;
+    }
+
+}
+
+
 
 /*end PEDRO*/
 @media screen and (min-width: 768px) {
@@ -327,16 +349,14 @@ footer {
     }
 
     #modalContainer h1 {
-        letter-spacing: 2px;
+        letter-spacing: 5px;
         font-size: 40px;
     }
     .regras {
-        background-size: 600px;
-        background-position-x: 250px;
-        background-position-y: 100px;
-        padding-top: 10%;
-        height: 100vh;
-        top: 0;
+        top: 35%;
+    }
+    #lineOfPlayer{
+        font-size: 5.5vw;
     }
     #lineDisk, #ligTable {
         width: 600px;
@@ -355,15 +375,15 @@ footer {
         justify-content: flex-start;
     }
     #pergaminho {
-        height: 80vh;
-        width: 50vw;
-        top: 15%;
+        height: 585px;
     }
     #content {
-        width: 100vw;
-        height: 100vh;
+        width: 65vw;
+        height: 60vh;
         position: absolute;
-        top: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     
 }
@@ -372,6 +392,28 @@ footer {
 @media screen and (min-width: 1440px){
     .modal__content {
         font-size:4rem;
+    }
+    header{
+        padding-top: 60px;
+    }
+    header h1{
+        font-size: 4vw;
+    }
+    .regras{
+        top:25%;
+    }
+    .regras h2 {
+        margin: 0;
+    }
+    .regras p {
+        width: 300px;
+    }
+    #pergaminho{
+        width: 570px;
+    }
+    #lineOfPlayer{
+        font-size: 5.5vw;
+        line-height: 14px;
     }
 }
 

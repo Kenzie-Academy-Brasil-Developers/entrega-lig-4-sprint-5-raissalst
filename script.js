@@ -334,8 +334,16 @@ function compare(diagonal){
         return false
     }
     if(arrDiag.length >=4){
-        for (let index = 0; index < arrDiag.length-1; index++) {
-            if(arrDiag[index] === arrDiag[index+1]){
+
+        if(arrDiag[0] === "discPlayer1"){
+            playOne.push(arrDiag[0])
+        }
+        if(arrDiag[0] === "discPlayer2"){
+            playTwo.push(arrDiag[0])
+        }
+
+        for (let index = 1; index < arrDiag.length; index++){
+            if(arrDiag[index] === arrDiag[index-1]){
                 if(arrDiag[index] === "discPlayer1"){
                     playOne.push(arrDiag[index])
                 }

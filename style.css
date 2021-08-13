@@ -170,6 +170,7 @@ footer {
     background-color: rgb(90, 228, 238);
     padding: 8px 25px;
     z-index: 2;
+    margin-top: 15vh;
     border-color: #addeff;
     box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
     -webkit-transition: all 150ms ease-in-out;

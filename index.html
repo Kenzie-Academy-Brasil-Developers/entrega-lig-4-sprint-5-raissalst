@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,23 +8,38 @@
     <title>Lig-4 Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
+<body>
+<img id="fundo"src="img/bomberman.jpg" alt="">
     <header>
         <h1>Lig-4 Game</h1>
     </header>
-    
+
     <main id="lig__container">
 
-        <div id="modalContainer">
-            <div class="modal__content">
-              <span id="close">&times;</span>
-              <p>Você ganhou!</p>
+        <section class="regras">
+            <img id="pergaminho" src="img/pergaminho.png" alt="">
+            <h2>Regras Lig-4</h2>
+            <p>
+                O objetivo é enfileirar 4 bombas iguais.<br>
+                Pode ser na horizontal, vertical ou diagonal.<br>
+                Foi o primeiro a enfileirar 4 suas bombas??? <br>
+                <strong>Parabéns! Você venceu</strong>
+            </p>
+        </section>
+
+        <div class="hidden" id="modalContainer">
+
+            <div id="content" class="modal__content">
+                <span id="close">&times;</span>
+                <p>Você ganhou!</p>
+
             </div>
         </div>
     </main>
-    
     <footer> By constelationFourStars</footer>
+    <script src="script.js"></script>
+
 </body>
-<script src="script.js"></script>
+
 </html>

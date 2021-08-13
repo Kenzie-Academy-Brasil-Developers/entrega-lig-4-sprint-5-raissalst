@@ -84,7 +84,7 @@ header h1 {
 }
 
 div.divCol{
-    background-image: url(/img/gramado.png);
+    background-image: url(img/gramado.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-size: 610%;
@@ -101,13 +101,13 @@ div.divCol{
     z-index: 1;
     width: 65%;
     height: 76%;
-    font-size: 5vw;
+    font-size: 4.5vw;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 60px;
     top: 10%;
     right: 20%;
 }
@@ -118,8 +118,8 @@ div.divCol{
     top: 0;
 }
 .regras p{   
-    height: 100%;
-    width: 90%;
+    height: 200%;
+    width: 80%;
     line-height: 100%;
 }
 
@@ -136,7 +136,7 @@ div.divCell{
 
 .discPlayer1{
     background-color: red;
-    background-image: url(/img/NeoBigBomb.gif);
+    background-image: url(img/NeoBigBomb.gif);
     background-repeat: no-repeat;
     background-size: 70%;
     background-position-x: center;
@@ -147,7 +147,7 @@ div.divCell{
 }
 .discPlayer2{
     background-color: black;
-    background-image: url(/img/NeoBigBomb.gif);
+    background-image: url(img/NeoBigBomb.gif);
     background-repeat: no-repeat;
     background-size: 70%;
     background-position-x: center;
@@ -288,17 +288,6 @@ footer {
     line-height: 30px;
     font-size: 2vw;
 }
-
-/* .erro__p {
-    color: black;
-    position: absolute;
-    top: 42%;
-    left: 50%;
-    transform: translate(-50%);
-    font-weight: bold;
-    line-height: 30px;
-    font-size: 5vw;
-} */
 
 
 /*end YASMIN*/

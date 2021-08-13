@@ -334,12 +334,14 @@ function compare(diagonal){
         return false
     }
     if(arrDiag.length >=4){
-        for (let index = 0; index < arrDiag.length; index++) {
-            if(arrDiag[index] === "discPlayer1"){
-                playOne.push(arrDiag[index])
-            }
-            if(arrDiag[index] === "discPlayer2"){
-                playTwo.push(arrDiag[index])
+        for (let index = 0; index < arrDiag.length-1; index++) {
+            if(arrDiag[index] === arrDiag[index+1]){
+                if(arrDiag[index] === "discPlayer1"){
+                    playOne.push(arrDiag[index])
+                }
+                if(arrDiag[index] === "discPlayer2"){
+                    playTwo.push(arrDiag[index])
+                }
             }
         }
         if(playOne.length === 4){

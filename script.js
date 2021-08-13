@@ -141,7 +141,7 @@ function eventClick(){
             positionA = disc.parentElement.getAttribute("data-col")
             positionB = disc.parentElement.getAttribute("data-line")
         }
-
+        
         changePlayer(cont)
         tabCheia += permirtirAddDisc(check)
 
@@ -529,7 +529,7 @@ reset.textContent = 'Reset';
 
 for(let i = 0; i < newCell.length;i++){ 
      newCell[i].innerHTML = '' ;
-     cont = 0
+     cont = 0;
 }
 lineOfPlayer.innerText = "Inicie o jogo!!"
 })
@@ -563,6 +563,7 @@ alert.classList.add("hidden")
 document.querySelector('#content').classList.remove = "erro__content";
 document.querySelector('#content').classList.add = "modal__content";
 },1500)
+cont = cont - 1;
 }
 
 function vitoriaAlert(text){

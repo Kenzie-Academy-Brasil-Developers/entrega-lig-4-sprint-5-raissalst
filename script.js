@@ -188,12 +188,12 @@ function verificaCel(conteudoCel, disc,cont){
     if((cont%2) !== 0){
         disc.classList.remove("discPlayer2")
         disc.classList.add("discPlayer1")
-        disc.classList.add("explosao")
+        // disc.classList.add("explosao")
 
     }else{
         disc.classList.remove("discPlayer1")
         disc.classList.add("discPlayer2")
-        disc.classList.add("explosao")
+        // disc.classList.add("explosao")
     }
 
     let status 
@@ -516,7 +516,7 @@ function victoryHor(arrayResultados, linhaParaArray) {
 const reset = document.createElement('button');
 reset.className = 'reset';
 reset.textContent = 'Start';
-document.body.appendChild(reset);
+document.querySelector("main").appendChild(reset);
 
 reset.addEventListener('click', function(){
 let divCell = document.querySelectorAll('.divCell')

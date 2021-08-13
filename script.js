@@ -531,6 +531,7 @@ for(let i = 0; i < newCell.length;i++){
      newCell[i].innerHTML = '' ;
      cont = 0
 }
+lineOfPlayer.innerText = "Inicie o jogo!!"
 })
 
   //empate
